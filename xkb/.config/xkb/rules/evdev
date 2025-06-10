@@ -1,0 +1,5 @@
+! option = symbols
+  devastator:map_sclk = +scroll(map_to_mod3)
+
+// Include the system 'evdev' file
+! include %S/evdev
