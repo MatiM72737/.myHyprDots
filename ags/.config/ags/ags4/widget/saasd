@@ -1,0 +1,5 @@
+className={isFocused.as(focused => {
+                const classes = `${focused ? "focused" : ""}`;
+                console.log(`[DEBUG CLASS] Przestrzeń ${ws.id}: ${classes}`); // Logowanie, aby zobaczyć klasy w konsoli
+                return classes;
+              })}

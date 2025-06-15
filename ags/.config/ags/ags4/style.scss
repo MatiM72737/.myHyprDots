@@ -1,0 +1,152 @@
+// Usuń @use jeśli nie masz scss-kompilacji.
+// @use "sass:color";
+
+// Definicje kolorów i zmiennych
+$bg: #212223;
+$fg: #f1f1f1;
+$accent: #378df7;
+$radius: 7px;
+
+// Stylowanie paska z klasą Bar (GTK CSS style)
+// Usuń 'window.' — używaj tylko klasy
+.Bar {
+  background-color: rgba(0, 0, 0, 0.35);
+  color: $fg;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  border: none;
+  box-shadow: none;
+
+  label {
+    margin: 0 8px;
+  }
+  
+  .Workspaces {
+    // GTK CSS nie obsługuje flexbox, więc zrób układ w kodzie, a tutaj tylko podstawowe style
+    spacing: 6px; // GTK CSS property dla spacing między dziećmi
+
+    button.WorkspaceButton {
+      // Reset styli, GTK ma swoje style
+      background-color: rgba(68, 68, 68, 0.9);
+      color: $fg;
+      border-radius: $radius;
+      padding: 0.4em 0.8em;
+      min-width: 28px;
+      min-height: 28px;
+      font-weight: normal;
+      transition: background-color 200ms ease;
+
+      &:hover {
+        background-color: rgba(55, 141, 247, 0.3);
+      }
+
+      &:active {
+        background-color: rgba(55, 141, 247, 0.5);
+      }
+
+      &.WorkspaceButton--focused {
+        background-color: #9c7eff; // fioletowy
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(156, 122, 255, 0.5);
+      }
+
+      label {
+        color: white;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .SysTray {
+    margin-right: 8px;
+
+    button {
+      background-color: transparent;
+      padding: 0 4px;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .Media .Cover {
+    min-height: 20px;
+    min-width: 20px;
+    border-radius: $radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .AudioSlider {
+    // Nie ma wsparcia dla "*" w GTK CSS, musisz stylować konkretne elementy
+
+    icon {
+      margin-right: 0.6em;
+    }
+
+    margin: 0 1em;
+
+    trough {
+      background-color: rgba(241, 241, 241, 0.2);
+      border-radius: $radius;
+    }
+
+    highlight {
+      background-color: $accent;
+      min-height: 8px;
+      border-radius: $radius;
+    }
+
+    slider {
+      background-color: $fg;
+      border-radius: $radius;
+      min-height: 10px;
+      min-width: 10px;
+      margin: -2px;
+    }
+  }
+}
+
+// Styl dla menu PowerMenu, bez 'window.'
+.PowerMenu {
+  background-color: rgba(33, 34, 35, 0.95);
+  padding: 16px;
+  border-radius: $radius;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  position: fixed;
+
+  .PowerActions {
+    // flex-direction i gap nie działają w GTK CSS - ustaw to w kodzie
+    spacing: 10px; // GTK CSS property zamiast gap
+
+    .PowerAction {
+      padding: 8px 12px;
+      border-radius: $radius;
+      cursor: pointer;
+
+      // GTK CSS nie obsługuje display:flex i gap
+      // możesz dodać wyrównanie w kodzie lub użyć box-align i box-pack (stare GTK CSS)
+
+      transition: background-color 150ms ease, transform 150ms ease;
+
+      &:hover {
+        background-color: rgba(55, 141, 247, 0.2);
+        transform: translateX(-5px);
+      }
+
+      img, .icon, svg {
+        font-size: 1.4em;
+        min-width: 24px;
+        text-align: center;
+      }
+
+      label {
+        min-width: 80px;
+        text-transform: capitalize;
+        color: $fg;
+      }
+    }
+  }
+}

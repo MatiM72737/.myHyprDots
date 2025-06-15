@@ -1,0 +1,191 @@
+// Usuń @use jeśli nie masz scss-kompilacji.
+// @use "sass:color";
+
+// Definicje kolorów i zmiennych
+$bg: #212223;
+$fg: #f1f1f1;
+$accent: #378df7;
+$radius: 8px;
+$powerActionsSize: 120px;
+
+// Stylowanie paska z klasą Bar (GTK CSS style)
+// Usuń 'window.' — używaj tylko klasy
+*{
+  margin: 0;
+  padding: 0;
+}
+.Bar {
+  background-color: rgba(0, 0, 0, 0);
+  color: $fg;
+  font-size: 0.9em;
+  font-weight: bold;
+  border: none;
+  box-shadow: none;
+  margin: 5px;
+  margin-bottom: 0px;
+  label {
+    margin: 0 8px;
+  }
+  
+  .Workspaces {
+    border-radius: $radius;
+    background-color: rgba(0, 0, 0, 0.32);
+    padding: 0.4em;
+    // GTK CSS nie obsługuje flexbox, więc zrób układ w kodzie, a tutaj tylko podstawowe style
+    button.WorkspaceButton {
+      // Reset styli, GTK ma swoje style
+      background-color: transparent;
+      color: $fg;
+      border-radius: $radius;
+      min-width: 24px;
+      min-height: 24px;
+      font-weight: normal;
+      transition: background-color 200ms ease;
+
+      &:hover {
+        background-color: rgba(55, 141, 247, 0.3);
+      }
+
+      &:active {
+        background-color: rgba(55, 141, 247, 0.5);
+      }
+
+      &.WorkspaceButton--focused {
+        background-color: #9c7eff; // fioletowy
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(156, 122, 255, 0.5);
+      }
+
+      label {
+        color: white;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .SysTray {    
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: $radius;
+    image{
+      min-width: auto;
+      min-height: auto;
+    }
+
+    button {
+      background-color: transparent;
+      //padding: 0 4px;
+      border: none;
+      box-shadow: none;
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+  }
+
+  .Media .Cover {
+    //min-height: 20px;
+    //min-width: 20px;
+    border-radius: $radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .AudioSlider {
+    // Nie ma wsparcia dla "*" w GTK CSS, musisz stylować konkretne elementy
+
+    icon {
+      margin-right: 0.6em;
+    }
+
+    margin: 0 1em;
+
+    trough {
+      background-color: rgba(241, 241, 241, 0.2);
+      border-radius: $radius;
+    }
+
+    highlight {
+      background-color: $accent;
+      min-height: 8px;
+      border-radius: $radius;
+    }
+
+    slider {
+      background-color: $fg;
+      border-radius: $radius;
+      min-height: 10px;
+      min-width: 10px;
+      margin: -2px;
+    }
+  }
+  .Media{
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: $radius;
+    //padding: 10px;
+  }
+  .Time{
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: $radius;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+}
+
+// Styl dla menu PowerMenu, bez 'window.'
+.PowerMenu {
+  background-color: rgba(36, 36, 36, 0.83);
+  //background-color: rgba(136, 0, 0, 0.951);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  .PowerActions {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    // flex-direction i gap nie działają w GTK CSS - ustaw to w kodzie
+    .PowerAction {
+      padding: 8px 12px;
+      border-radius: 20px;
+      min-width: $powerActionsSize;
+      min-height: $powerActionsSize;
+      background-color: rgba(46, 46, 46, 0.462);
+      margin: 5px;
+      // GTK CSS nie obsługuje display:flex i gap
+      // możesz dodać wyrównanie w kodzie lub użyć box-align i box-pack (stare GTK CSS)
+
+      transition: background-color 150ms ease, transform 150ms ease;
+
+      &:hover {
+        background-color: rgba(31, 31, 31, 0.574);
+        transform: translateX(-5px);
+      }
+
+      img, .icon, svg {
+        font-size: 1.4em;
+        min-width: 24px;
+      }
+
+      label {
+        text-transform: capitalize;
+        color: $fg;
+      }
+    }
+  }
+}
+.AppButton {
+  padding: 8px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+.AppButton:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.AppButton .name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.AppButton .description {
+  opacity: 0.7;
+  font-size: 0.9em;
+}
