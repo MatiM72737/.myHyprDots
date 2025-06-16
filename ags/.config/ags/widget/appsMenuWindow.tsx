@@ -14,12 +14,13 @@ function show() {
 }
 
 function AppButton({ app }: { app: Apps.Application }) {
+    
     return <button
         css_classes={["AppButton"]}
         onClicked={() => {app.launch(); hide();}}
         hexpand>
         <box spacing={8}>
-            <image icon_name={app.get_icon_name()} pixelSize={64} />
+            <image icon_name={app.get_icon_name().replace('.png', '')} pixelSize={64} />
             <box vertical>
                 <label
                     css_classes={["name"]}
@@ -46,7 +47,7 @@ export function appsMenuWindow()
       entryMultiplier: 0,
       executableMultiplier: 2,
   })
-
+    console.log(apps.fuzzy_query("qt6")[0].get_icon_name());
     let txt = Variable('');
     const list = txt(text => apps.fuzzy_query(text))
     return <window
