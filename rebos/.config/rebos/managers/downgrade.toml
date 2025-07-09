@@ -1,0 +1,25 @@
+# --------------------------- #
+#    Manager Configuration    #
+# --------------------------- #
+
+# Make sure to enter the exact command you use as the normal user!
+# That means including 'sudo' or 'doas' or whatever if the command needs it.
+# Where you would put items, enter '#:?'.
+
+# Example: add = "sudo apt install #:?"
+
+add = "sudo downgrade #:?" # Example: sudo apt install #:?
+remove = "paru -Rns #:?" # Example: sudo apt remove #:?
+
+plural_name = "downgrade packages"
+
+hook_name = "downgrade_packages" # This is used in hooks. (Example: post_system_packages_add)
+
+# ------------------------------- #
+#    Additional configuration.    #
+# ------------------------------- #
+
+# many_args = BOOL: Can you supply many items as an argument? Example: 'sudo apt install git vim wget'
+
+[config]
+many_args = false

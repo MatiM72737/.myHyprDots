@@ -1,0 +1,5 @@
+[managers.bootstrap]
+items = [
+    "downgrade",
+    "flatpak",
+]

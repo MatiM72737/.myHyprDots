@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check if spotify is installed using paru
+if paru -Q spotify &> /dev/null; then
+    echo "Spotify is installed. Running SpotX script..."
+    bash <(curl -sSL https://spotx-official.github.io/run.sh) -df
+else
+    echo "Spotify isn't installed."
+fi
+

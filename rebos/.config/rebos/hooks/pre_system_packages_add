@@ -1,0 +1,83 @@
+#!/bin/bash
+if grep -q "davinci-resolve-studio" "$HOME/.config/rebos/gen.toml"; then
+    if ! paru -Q davinci-resolve-studio &>/dev/null; then
+        echo "first paru install, if it give error, it's ok"
+        paru -S davinci-resolve-studio --noconfirm
+        VERSION="20.0"
+        STUDIO=true
+        DOWNLOAD_DIR="${HOME}/.cache/paru/clone/davinci-resolve-studio/"
+        USER_AGENT="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36"
+        REFERER_ID="263d62f31cbb49e0868005059abcb0c9"
+
+        
+        # Install required tools
+        if ! command -v jq &> /dev/null || ! command -v curl &> /dev/null; then
+            echo "Installing dependencies..."
+            sudo pacman -S --needed jq curl
+        fi
+
+        # Product name
+        PRODUCT="DaVinci Resolve Studio"
+
+        # Create download dir
+        mkdir -p "$DOWNLOAD_DIR"
+
+        # Step 1: Get download ID
+        echo "🔍 Fetching download info..."
+        DOWNLOAD_JSON=$(curl -s "https://www.blackmagicdesign.com/api/support/us/downloads.json")
+        DOWNLOAD_ID=$(echo "$DOWNLOAD_JSON" | jq -r --arg PRODUCT "$PRODUCT $VERSION" \
+            '.downloads[] | .urls.Linux?[]? | select(.downloadTitle | test("^" + $PRODUCT + "( Update)?$")) | .downloadId')
+
+        [ -z "$DOWNLOAD_ID" ] && { echo "❌ Error: Download ID not found"; exit 1; }
+        echo "✅ Download ID: $DOWNLOAD_ID"
+
+        # Step 2: Get download URL
+        echo "🔗 Getting download URL..."
+        REQUEST_JSON=$(jq -n \
+            --arg firstname "Arch" \
+            --arg lastname "Linux" \
+            --arg email "user@archlinux.org" \
+            --arg phone "+1234567890" \
+            --arg country "us" \
+            --arg street "-" \
+            --arg state "California" \
+            --arg city "Los Angeles" \
+            --arg product "$PRODUCT" \
+            '{
+                "firstname": $firstname, "lastname": $lastname, "email": $email,
+                "phone": $phone, "country": $country, "street": $street,
+                "state": $state, "city": $city, "product": $product
+            }')
+
+        RESOLVE_URL=$(curl -s \
+            -H "Host: www.blackmagicdesign.com" \
+            -H "User-Agent: $USER_AGENT" \
+            -H "Content-Type: application/json" \
+            -H "Referer: https://www.blackmagicdesign.com/support/download/$REFERER_ID/Linux" \
+            --data-raw "$REQUEST_JSON" \
+            "https://www.blackmagicdesign.com/api/register/us/download/$DOWNLOAD_ID")
+
+        [ -z "$RESOLVE_URL" ] && { echo "❌ Error: Could not get download URL"; exit 1; }
+        echo "✅ Download URL acquired"
+
+        # Step 3: Download with curl
+        OUTPUT_FILE="${DOWNLOAD_DIR}/DaVinci_Resolve_Studio_${VERSION}_Linux.zip"
+        echo "⬇️ Downloading $PRODUCT $VERSION..."
+        echo "📁 Output: $OUTPUT_FILE"
+        echo "🚀 Press Ctrl+C to cancel"
+
+        # Download with curl with progress bar
+        curl -L -# -o "$OUTPUT_FILE" \
+             -H "User-Agent: $USER_AGENT" \
+             -H "Referer: https://www.blackmagicdesign.com/support/download/$REFERER_ID/Linux" \
+             "$RESOLVE_URL"
+
+        # Verify download
+        if [ -f "$OUTPUT_FILE" ]; then
+            echo -e "\n✅ Download complete! File saved to: $OUTPUT_FILE"
+        else
+            echo -e "\n❌ Download failed!"
+            exit 1
+        fi
+    fi
+fi

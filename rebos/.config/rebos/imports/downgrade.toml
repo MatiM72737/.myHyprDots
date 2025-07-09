@@ -1,0 +1,4 @@
+[managers.downgrade]
+items = [
+    "wine-staging=9.21",
+]
