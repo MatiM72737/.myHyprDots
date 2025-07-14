@@ -12,7 +12,7 @@ imports = [
 # Packages to be installed via the native package manager.
 [managers.system]
 items = [
-	"linux-zen",
+    "linux-zen",
     "preload",
     "linux-zen-headers",
     "nvidia-dkms",
@@ -204,6 +204,8 @@ items = [
     "gnome-disk-utility",
     "irqbalance",
     "stow",
+    "hyprpolkitagent",
+    "exfatprogs",
 ]
 
 
