@@ -206,6 +206,7 @@ items = [
     "stow",
     "hyprpolkitagent",
     "exfatprogs",
+    "caddy",
 ]
 
 
