@@ -18,3 +18,26 @@ function host
     end
     exec caddy file-server --browse --listen :$port
 end
+
+function convert_to_mov
+    if test (count $argv) -eq 0
+        echo "🔁 Converting all .mp4/.MP4 files in current directory..."
+        for f in *.mp4 *.MP4
+            if test -f "$f"
+                set output (string replace -r '\.MP4$|\.mp4$' '.mov' -- $f)
+                echo "🎬 Converting: $f → $output"
+                ffmpeg -i "$f" -c:v copy -c:a pcm_s24le "$output"
+            end
+        end
+    else
+        for f in $argv
+            if test -f "$f"
+                set output (string replace -r '\.MP4$|\.mp4$' '.mov' -- $f)
+                echo "🎬 Converting: $f → $output"
+                ffmpeg -i "$f" -c:v copy -c:a pcm_s24le "$output"
+            else
+                echo "❌ File not found: $f"
+            end
+        end
+    end
+end

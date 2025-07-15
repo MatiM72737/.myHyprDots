@@ -64,14 +64,14 @@
                     "format-critical": " {temperatureC}°C",
                         "format-icons": ["", "", ""],
                             "critical-threshold": 80,
-                                "on-click": "wezterm btop"
+                                "on-click": "footclient btop"
     }
 ,
 
     "memory": {
         "interval": 30,
             "format": "  {used:0.2f} / {total:0.0f} GB",
-                "on-click": "wezterm -e btop"
+                "on-click": "footclient -e btop"
     },
 
     "battery": {
