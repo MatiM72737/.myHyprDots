@@ -41,3 +41,12 @@ function convert_to_mov
         end
     end
 end
+function clean-snapper --description "Delete all but newest Snapper snapshots"
+    for config in root home
+        echo "Cleaning $config snapshots..."
+        for id in (sudo snapper -c $config list | awk 'NR>2 {print $1}' | grep -v '^0$' | sort -n | head -n -1)
+            sudo snapper -c $config delete $id
+        end
+    end
+end
+set -gx PATH $PATH /opt/android-sdk/platform-tools

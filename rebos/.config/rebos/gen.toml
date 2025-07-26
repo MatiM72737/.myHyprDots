@@ -102,7 +102,7 @@ items = [
     "meson",
     "ttf-meslo-nerd",
     "noto-fonts",
-    "kitty",
+    "foot",
     "pipewire",
     "pipewire-jack",
     "pipewire-pulse",
