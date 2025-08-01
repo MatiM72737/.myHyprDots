@@ -1,0 +1,17 @@
+configuration {
+  modi: "window,drun,ssh,run";
+  font: "JetBrainsMono Nerd Font 14";
+  icon-theme: "Oranchelo";
+  show-icons: true;
+  location: 0;
+  disable-history: true;
+  hide-scrollbar: true;
+  display-drun: " Apps ";
+  display-run: " Run ";
+  display-window: " Window ";
+  display-ssh: "󰤨 SSH ";
+  sidebar-mode: false;
+  drun-display-format: "{icon} {name}";
+  terminal: "kitty";
+}
+@theme "~/.config/rofi/themes/theme.rasi"

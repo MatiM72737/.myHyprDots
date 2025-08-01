@@ -1,0 +1,129 @@
+* {
+          rosewater: #f5e0dc;
+          flamingo: #f2cdcd;
+          pink: #f5c2e7;
+          mauve: #cba6f7;
+          red: #f38ba8;
+          maroon: #eba0ac;
+          peach: #fab387;
+          yellow: #f9e2af;
+          green: #a6e3a1;
+          teal: #94e2d5;
+          sky: #89dceb;
+          sapphire: #74c7ec;
+          blue: #89b4fa;
+          lavender: #b4befe;
+          text: #cdd6f4;
+          crust: #11111b;
+
+          base: rgba(0,0,0,0.1);
+          surface: rgba(255, 255, 255, 0.1);
+          hoverFg: #11111b;
+          hoverBg: #cba6f7;
+          activeFg: #11111b;
+          activeBg: #cba6f7;
+      }
+
+      element-text, element-icon , mode-switcher {
+          background-color: inherit;
+          text-color:       inherit;
+      }
+
+      window {
+          width: 480px;
+          height: 600px;
+          border: 2px;
+          border-color: @lavender;
+          background-color: rgba(0,0,0,0.4);
+          border-radius: 16px;
+          padding: 8px;
+      }
+
+      mainbox {
+          background-color: transparent;
+      }
+
+      inputbar {
+          children: [prompt,entry];
+          background-color: @surface;
+          border-radius: 16px;
+          // padding: 6px;
+          padding: 2px;
+          margin: 0 0 8px 0;
+      }
+
+      prompt {
+          // background-color: @active;
+          // text-color: @crust;
+          text-color: @text;
+          background-color: transparent;
+          padding:  2px 0 2px 8px;
+          border-radius: 16px;
+      }
+
+      textbox-prompt-colon {
+          expand: false;
+          str: ":";
+      }
+
+      entry {
+          text-color: @text;
+          background-color: transparent;
+          padding:  2px 0 2px 8px;
+      }
+
+      textbox {
+          text-color: @text;
+          background-color: transparent;
+      }
+
+      message {
+          background-color: transparent;
+          padding: 8px;
+          border-radius: 16px;
+      }
+
+      listview {
+          columns: 1;
+          lines: 5;
+          background-color: transparent;
+      }
+
+      element {
+          padding: 4px 4px 4px 4px;
+          background-color: transparent;
+          text-color: @text;
+          border-radius: 16px;
+          margin: 0 0 4px 0;
+      }
+
+      element-icon {
+          size: 24px;
+          background-color: transparent;
+      }
+      element-text {
+          background-color: transparent;
+      }
+
+      element selected {
+          background-color: @activeBg;
+          text-color: @activeFg;
+      }
+
+      mode-switcher {
+          spacing: 2;
+      }
+
+      button {
+          padding: 4px 4px;
+          text-color: @text;
+          background-color: transparent;
+          // vertical-align: 0.5;
+          // horizontal-align: 0.5;
+          border-radius: 16px;
+      }
+
+      button selected {
+          text-color: @activeFg;
+          background-color: @activeBg;
+      }
