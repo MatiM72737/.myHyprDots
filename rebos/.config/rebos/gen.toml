@@ -171,9 +171,6 @@ items = [
     "dnsmasq",
     "btop",
     "mpv",
-    "freerdp2",
-    "heroic-games-launcher-bin",
-    "unityhub --noconfirm",
     "locate",
     "dconf-editor",
     "nemo-fileroller",
@@ -207,6 +204,7 @@ items = [
     "hyprpolkitagent",
     "exfatprogs",
     "caddy",
+    "zita-njbridge",
 ]
 
 
