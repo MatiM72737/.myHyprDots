@@ -76,6 +76,7 @@ window#waybar.hidden {
 #clock,
 #battery,
 #cpu,
+#custom-ups,
 #memory,
 #disk,
 #temperature,

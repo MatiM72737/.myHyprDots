@@ -30,6 +30,7 @@
                                             "custom/storage",
                                             "memory",
                                             "cpu",
+                                            "custom/ups",
                                             //"battery",
                                             "wireplumber",
                                             "tray",
@@ -56,6 +57,12 @@
             "tooltip": false,
                 "on-click": "gsimplecal"
     },
+    "custom/ups": {
+        "exec": "~/.config/waybar/modules/ups_status.sh",
+            "interval": 10,
+                "return-type": "json"
+    },
+
 
     "temperature": {
         "interval": 2,

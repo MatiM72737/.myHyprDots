@@ -1,10 +1,10 @@
-pkill -f ayugram-desktop;
+pkill -f AyuGram;
 pkill -f vesktop;
 pkill -f qpwgraph;
 
-sleep 0.1;
+sleep 0.3;
 
 qpwgraph --minimized &
 qpwgraph --minimized &
 vesktop --start-minimized &
-ayugram-desktop -startintray&
+AyuGram -startintray&

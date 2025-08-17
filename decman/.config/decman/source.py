@@ -1,9 +1,13 @@
 import decman
 
 decman.packages = [
-    "arduino-ide", 
+    "rpi-imager",
+    "tinyxxd",
+    "nut",
     "krita",
     "ffmpeg",
+    "gvfs-afc",
+    "gvfs-nfs",
     "neovim",
     "ncurses",
     "less",
@@ -666,6 +670,7 @@ decman.packages = [
     "libvirt-glib",
     "libvirt-dbus",
     "libvorbis",
+    "vlc",
     "libvlc",
     "libvpl",
     "libwebp",
@@ -1283,7 +1288,6 @@ decman.packages = [
     "verdict",
     "v4l-utils",
     "vapoursynth",
-    "vlc",
     "uv",
     "vid.stab",
     "virt-viewer",
@@ -1407,6 +1411,7 @@ decman.packages = [
     "zram-generator",
 ]
 decman.aur_packages = [
+    "arduino-ide-bin",
     "anydesk-bin",
     "android-sdk-platform-tools",
     "ayugram-desktop-bin",
@@ -1418,7 +1423,6 @@ decman.aur_packages = [
     "cockpit-sensors",
     "create-tauri-app",
     "curseforge",
-    "davinci-resolve-studio",
     "downgrade",
     "decman",
     "electron37-bin",
@@ -1435,7 +1439,7 @@ decman.aur_packages = [
     "obs-studio-git",
     "onlyoffice-bin",
     "passmark-performancetest-bin",
-    "paru",
+    "yay",
     "patool",
     "preload",
     "pw-lat",
@@ -1458,5 +1462,9 @@ decman.aur_packages = [
     "wlogout",
     "yp-tools",
     "ventoy-bin",
+    "steghide",
 ]
-decman.ignored_packages = ["ncurses5-compat-libs"]
+decman.ignored_packages = [
+    "ncurses5-compat-libs",
+    "davinci-resolve-studio",
+]
