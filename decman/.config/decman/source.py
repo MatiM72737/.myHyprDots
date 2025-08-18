@@ -1,6 +1,7 @@
 import decman
 
 decman.packages = [
+    "thunderbird",
     "rpi-imager",
     "tinyxxd",
     "nut",
@@ -1411,6 +1412,7 @@ decman.packages = [
     "zram-generator",
 ]
 decman.aur_packages = [
+    "davinci-ffmpeg-encoder-plugin",
     "arduino-ide-bin",
     "anydesk-bin",
     "android-sdk-platform-tools",
