@@ -1486,7 +1486,6 @@ decman.aur_packages = [
     "wdisplays",
     "gcc-arm-none-eabi-bin",
     "bambustudio-nvidia-bin",
-    "cura-bin",
 ]
 decman.ignored_packages = [
     "ncurses5-compat-libs",
