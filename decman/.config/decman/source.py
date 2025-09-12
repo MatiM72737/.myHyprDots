@@ -1,6 +1,11 @@
 import decman
 
 decman.packages = [
+    "distroav-bin",
+    "flatpak", 
+    "kdenlive",
+    "resources",
+    "rofi",
     "kvantum-qt5",
     "qt6ct-kde",
     "remmina",
@@ -198,7 +203,6 @@ decman.packages = [
     "findutils",
     "ffnvcodec-headers",
     "fish",
-    "flatpak",
     "fftw",
     "flac",
     "flex",
@@ -1193,7 +1197,6 @@ decman.packages = [
     "rhash",
     "rpcbind",
     "rnnoise",
-    "rofi-wayland",
     "sdl12-compat",
     "rsync",
     "rpmextract",
@@ -1473,7 +1476,6 @@ decman.aur_packages = [
     "teapot-gclient",
     "tauri-cli",
     "unigine-valley",
-    "typora",
     "vesktop-bin",
     "vkbasalt-cli",
     "visual-studio-code-bin",
