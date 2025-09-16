@@ -1,6 +1,9 @@
 import decman
 
 decman.packages = [
+    "filezilla",
+    "stm32cubemx",
+    "websocat",
     "distroav-bin",
     "flatpak", 
     "kdenlive",
