@@ -49,4 +49,18 @@ function clean-snapper --description "Delete all but newest Snapper snapshots"
         end
     end
 end
+
+function gacp
+    if test (count $argv) -lt 1
+        echo "Użycie: gacp \"komentarz commita\""
+        return 1
+    end
+
+    set message $argv[1]
+    git add .
+    git commit -m "$message"
+    git push
+end
+
+
 set -gx PATH $PATH /opt/android-sdk/platform-tools

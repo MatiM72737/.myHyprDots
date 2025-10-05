@@ -1,6 +1,7 @@
 import decman
 
 decman.packages = [
+    "obs-studio",
     "filezilla",
     "stm32cubemx",
     "websocat",
@@ -34,7 +35,6 @@ decman.packages = [
     "sway",
     "wlr-randr",
     "xdg-desktop-portal-gtk",
-    "thunderbird",
     "rpi-imager",
     "tinyxxd",
     "nut",
@@ -821,7 +821,6 @@ decman.packages = [
     "nmap",
     "nftables",
     "netavark",
-    "nemo",
     "nodejs",
     "npth",
     "nss",
@@ -1460,7 +1459,6 @@ decman.aur_packages = [
     "libtelnet",
     "oh-my-posh-bin",
     "obs-multi-rtmp",
-    "obs-studio-git",
     "onlyoffice-bin",
     "passmark-performancetest-bin",
     "paru",
