@@ -62,5 +62,15 @@ function gacp
     git push
 end
 
+function gsync
+    while true
+        git add .
+        git commit -m "auto-sync (fish)" >/dev/null 2>&1
+        git pull --rebase >/dev/null 2>&1
+        git push >/dev/null 2>&1
+        sleep 5
+    end
+end
+
 
 set -gx PATH $PATH /opt/android-sdk/platform-tools
