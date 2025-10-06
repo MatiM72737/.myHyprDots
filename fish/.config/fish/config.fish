@@ -63,14 +63,20 @@ function gacp
 end
 
 function gsync
+    echo "📡 Auto Git Sync started..."
     while true
         git add .
-        git commit -m "auto-sync (fish)" >/dev/null 2>&1
-        git pull --rebase >/dev/null 2>&1
-        git push >/dev/null 2>&1
+        if git diff --cached --quiet
+            # brak zmian
+        else
+            set now (date "+%H:%M:%S")
+            git commit -m "auto-sync $now"
+            echo "✅ Commit zrobiony o $now"
+        end
+        git pull --rebase
+        git push
         sleep 5
     end
 end
-
 
 set -gx PATH $PATH /opt/android-sdk/platform-tools
