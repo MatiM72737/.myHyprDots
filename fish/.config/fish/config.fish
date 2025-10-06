@@ -75,7 +75,7 @@ function gsync
             git pull --rebase >/dev/null 2>&1
             git push >/dev/null 2>&1
         end
-        sleep 5
+        sleep 2
     end
 end
 
