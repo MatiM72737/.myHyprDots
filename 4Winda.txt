@@ -1,0 +1,41 @@
+function gsync {
+    Write-Host "[⟳ Auto Git Sync started...]"
+
+    while ($true) {
+        # Pull remote changes
+        $pull = git pull --rebase 2>&1
+        if ($LASTEXITCODE -eq 0) {
+            if ($pull -notmatch "Already up to date") {
+                $now = Get-Date -Format "HH:mm:ss"
+                Write-Host "⬇ Pulled new changes at $now"
+            }
+        } else {
+            Write-Host "⚠️ Git pull failed:"
+            Write-Host $pull
+        }
+
+        # Check local changes
+        git add .
+        $diff = git diff --cached --quiet
+        if (-not $?) {
+            $now = Get-Date -Format "HH:mm:ss"
+            git commit -m "auto-sync $now" | Out-Null
+            Write-Host "⟳ Committed local changes at $now"
+            git push | Out-Null
+            Write-Host "⬆ Pushed to remote at $now"
+        }
+
+        Start-Sleep -Seconds 2
+    }
+}
+
+
+$PROFILE
+
+jesli nie istnieje
+
+New-Item -Path $PROFILE -ItemType File -Force
+
+jesli problem
+
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned

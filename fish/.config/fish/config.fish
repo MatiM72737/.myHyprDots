@@ -65,16 +65,32 @@ end
 function gsync
     echo "[⟳ Auto Git Sync started...]"
     while true
+        # try to pull new changes
+        set pull_output (git pull --rebase 2>&1)
+        if test $status -eq 0
+            if string match -q "*Already up to date*" "$pull_output"
+                # no new remote changes
+            else if string match -q "*Fast-forward*" "$pull_output"
+                set now (date "+%H:%M:%S")
+                echo "⬇ Pulled new changes at $now"
+            end
+        else
+            echo "⚠️  Git pull failed:"
+            echo $pull_output
+        end
+
+        # check for local changes
         git add .
         if git diff --cached --quiet
-            # brak zmian, nic nie pokazuj
+            # no local changes
         else
             set now (date "+%H:%M:%S")
             git commit -m "auto-sync $now" >/dev/null 2>&1
-            echo "[⇄ Commit zrobiony o ($now)]"
-            git pull --rebase >/dev/null 2>&1
+            echo "⟳ Committed local changes at $now"
             git push >/dev/null 2>&1
+            echo "⬆ Pushed to remote at $now"
         end
+
         sleep 2
     end
 end
