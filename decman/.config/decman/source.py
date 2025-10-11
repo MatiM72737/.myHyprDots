@@ -1,6 +1,7 @@
 import decman
 
 decman.packages = [
+    "noto-fonts-emoji",
     "obs-studio",
     "filezilla",
     "stm32cubemx",
@@ -27,7 +28,6 @@ decman.packages = [
     "avr-libc",
     "avrdude",
     "inkscape",
-    "blender",
     "iotop",
     "nvme-cli",
     "plymouth",
